@@ -1,7 +1,9 @@
 function get_coin(coin, symbol){
     document.querySelector('.price .title .name').innerHTML = "Carregando...";
-    
-    fetch('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym='+coin+'&tsym='+symbol, {method: 'GET'}).then(function(response) {
+
+    let h = new Headers();
+
+    fetch('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym='+coin+'&tsym='+symbol, {method: 'GET', headers: h, mode: 'cors'}).then(function(response) {
         return response.json();
     }).then(function(data) {
         data = data['Data'];
