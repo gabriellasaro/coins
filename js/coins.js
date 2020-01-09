@@ -28,7 +28,10 @@ function get_coin(coin, symbol){
             exchanges.appendChild(create_item_exchange(data['Exchanges'][i], (i%2)));
         }
     }).catch(function() {
-        console.log("Error!");
+        window.setTimeout(function(){
+            console.log("Error!");
+            get_coin('ETH', getData('coin', 'BRL'));
+        }, 300);
     });
 }
 
@@ -68,4 +71,4 @@ function create_item_exchange(data, bc){
     return root;
 }
 
-get_coin((localStorage.getItem('default') != null ? localStorage.getItem('default') : 'BTC'),(localStorage.getItem('coin') != null ? localStorage.getItem('coin') : 'BRL'));
+get_coin(getData('default', 'BTC'), getData('coin', 'BRL'));
