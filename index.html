@@ -1,0 +1,193 @@
+<!--
+L                A           SSSSSSSSSSSSSSSSAAAAAAAAAAARRRRRRRRRRRROOOOOOOOOO
+L               A A         SSS             A         AR          R O         O
+L              A   A      SSS              A         AR          R   O         O
+L             A     A      SSS            A         AR          R     O         O
+L            A       A       SSSSS       A         AR          R       O    O    O
+L           AAAAAAAAAAA          SSSSS  AAAAAAAAAAARRRRRRRRRRRR         O    O    O
+L          A           A             SSA         AR  RR                  O    O    O
+L         A             A             ASS       AR     RR                 O         O
+L        A               A           ASSSS     AR       RR                 O         O
+LLLLLLLLA                 ASSSSSSSSSASSSS     AR         RR                 OOOOOOOOOOO
+-->
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133446541-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-133446541-1');
+</script>
+<title>Coins - Cotações e Exchanges</title>
+<link rel="canonical" href="https://coins.lasaro.dev/">
+<meta name="language" content="pt-BR">
+<meta property="og:title" content="Coins - Cotações">
+<meta property="og:type" content="website">
+<meta property="og:image" itemprop="image" content="img/gabriel.png">
+<meta property="og:site_name" content="Coins - Cotações e Exchanges">
+<meta property="og:locale" content="pt-BR">
+<meta name="Robots" content="INDEX,FOLLOW">
+<meta name="DISTRIBUTION" content="GLOBAL">
+<meta name="COPYRIGHT" content="Copyright (c) Gabriel Lasaro">
+<meta name="RATING" content="GENERAL">
+<link rel="stylesheet" href="css/home.css">
+<meta name="theme-color" content="#3689e6">
+<meta name="viewport" content="width=device-width">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head><body>
+<div class="price">
+    <div class="title">
+        <img src="" class="img-coin">
+        <h1 class="button-select"><span class="name">Carregando...</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg></h1>
+    </div>
+    <div class="values">
+        <div class="coin">
+            <input type="text" style="direction: rtl;" name="c1" value="...">
+            <span></span>
+        </div>
+        <div class="coin">
+            <span></span>
+            <input type="text" name="c2" value="...">
+            <input type="hidden" name="price">
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="title"><p>Exchanges</p></div>
+    <div class="exchanges"></div>
+
+    <div class="settings">
+        <p>Exibição padrão:</p>
+        <select name="default">
+            <option value="BTC" selected>Bitcoin</option> 
+            <option value="BCH">Bitcoin Cash</option>
+            <option value="ETH">Ethereum</option>
+            <option value="EOS">EOS</option>
+            <option value="XRP">XRP</option>
+            <option value="LTC">Litecoin</option>
+            <option value="ETC">Ethereum Classic</option>
+            <option value="TRX">TRON</option>
+          </select>
+        <hr>
+        <p>Moeda padrão:</p>
+        <select name="coin">
+            <option value="BRL" selected>BRL</option>
+            <option value="USD">USD</option>
+        </select>
+    </div>
+    
+    <div class="copy">
+        <p>Este site está sobre a licença MIT.<br>Acesse o repositório em: <a href="https://github.com/gabriellasaro/dev.lasaro.coins" title="https://github.com/gabriellasaro/dev.lasaro.coins">gabriellasaro/dev.lasaro.coins</a></p>
+    </div><br>
+</div>
+
+<div class="menu" style="display:none;">
+    <p>Bitcoin</p>
+    <p>Bitcoin Cash</p>
+    <p>Ethereum</p>
+    <p>EOS</p>
+    <p>XRP</p>
+    <p>Litecoin</p>
+    <p>Ethereum Classic</p>
+    <p>TRON</p>
+    <p>Dash</p>
+    <p>Monero</p>
+    <p>Zcash</p>
+    <p>BitTorrent (USD)</p>
+    <p>Basic Attention Token (USD)</p>
+    <p>Nano (USD)</p>
+    <p>Doge (USD)</p>
+    <p>Stellar (USD)</p>
+</div>
+
+<script>
+let menu = document.querySelectorAll('.menu p');
+
+menu[0].addEventListener("click", function(){
+    get_coin('BTC', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[1].addEventListener("click", function(){
+    get_coin('BCH', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[2].addEventListener("click", function(){
+    get_coin('ETH', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[3].addEventListener("click", function(){
+    get_coin('EOS', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[4].addEventListener("click", function(){
+    get_coin('XRP', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[5].addEventListener("click", function(){
+    get_coin('LTC', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[6].addEventListener("click", function(){
+    get_coin('ETC', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[7].addEventListener("click", function(){
+    get_coin('TRX', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[8].addEventListener("click", function(){
+    get_coin('DASH', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[9].addEventListener("click", function(){
+    get_coin('XMR', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[10].addEventListener("click", function(){
+    get_coin('ZEC', getData('coin', 'BRL'));
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[11].addEventListener("click", function(){
+    get_coin('BTT', 'USD');
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[12].addEventListener("click", function(){
+    get_coin('BAT', 'USD');
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[13].addEventListener("click", function(){
+    get_coin('NANO', 'USD');
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[14].addEventListener("click", function(){
+    get_coin('DOGE', 'USD');
+    document.querySelector('.menu').style.display = 'none';
+});
+
+menu[15].addEventListener("click", function(){
+    get_coin('XLM', 'USD');
+    document.querySelector('.menu').style.display = 'none';
+});
+</script>
+<script async src="js/data.js"></script>
+<script async src="js/input.js"></script>
+<script async src="js/coins.js"></script>
+</body></html>
