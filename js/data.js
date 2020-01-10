@@ -1,5 +1,5 @@
 function getData(key, val) {
-  return localStorage.getItem(key) !=null ? localStorage.getItem('coin') : val
+  return localStorage.getItem(key) != null ? localStorage.getItem(key) : val
 }
 
 document.querySelector('.settings select[name="default"]').addEventListener("click", function(){
