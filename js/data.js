@@ -18,3 +18,20 @@ if (localStorage.getItem('default-index')!=null){
 if (localStorage.getItem('coin-index')!=null){
   document.querySelector('.settings select[name="coin"]').options[localStorage.getItem('coin-index')].selected = true;
 }
+
+
+function AddCoin() {
+  let menu = document.querySelectorAll('.menu p');
+
+  for (let i = 0; i < menu.length; i++) {
+    menu[i].addEventListener("click", function(){
+      if (menu[i].getAttribute('sym') == null){
+        get_coin(menu[i].getAttribute('coin'), getData('coin', 'BRL'));
+      } else {
+        get_coin(menu[i].getAttribute('coin'), menu[i].getAttribute('sym'));
+      }
+      document.querySelector('.menu').style.display = 'none';
+    });
+  }
+}
+AddCoin();

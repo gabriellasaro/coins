@@ -12,12 +12,12 @@ body{
 
 @media only screen and (min-width: 450px) {
     .price {
-        margin-top: 230px;
+        margin-top: 100px;
     }
 }
 @media only screen and (max-width: 450px) {
     .price {
-        margin-top: 90px;
+        margin-top: 70px;
     }
 }
 .price .title img{
@@ -112,7 +112,7 @@ body{
 /* CONTENT */
 .content{
     position: relative;
-    top:82px;
+    top:72px;
 }
 
 @media only screen and (min-width: 1050px) {
@@ -215,13 +215,21 @@ body{
     grid-area:copy;
     padding:4px;
     margin:60px 0px 20px 0px;
+    color:#303030;
 }
 .content .copy p{
     text-align: center;
-    color:#303030;
     font-size:14px;
     padding:4px;
     margin:0px;
+}
+.content .copy a {
+    color: #357cce;
+    text-decoration: none;
+    font-weight: bold;
+}
+.content .copy a:hover {
+    text-decoration: underline;
 }
 
 .menu {
@@ -237,13 +245,13 @@ body{
 
 @media only screen and (min-width: 450px) {
     .menu {
-        top:530px;
+        top:405px;
     }
 }
 
 @media only screen and (max-width: 450px) {
     .menu {
-        top:390px;
+        top:375px;
     }
 }
 
@@ -260,6 +268,10 @@ body{
     opacity: 1;
     transform: scale(1.03);
     background: #357cce;
+}
+.menu hr {
+    border: none;
+    border-top: 1px solid rgb(111, 200, 252);
 }
 
 .settings {
