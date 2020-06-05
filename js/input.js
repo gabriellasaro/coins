@@ -24,25 +24,6 @@ document.querySelector('.price .values .coin input[name="c2"]').addEventListener
     native2coin();
 });
 
-document.querySelector('.price .title .button-select').addEventListener("click", function(){
-    let menu = document.querySelector('.menu');
-    if (menu.style.display=="block"){
-        menu.style.display = "none";
-    } else{
-        menu.style.display = "block";
-        window.setTimeout(function(){
-            document.querySelector('body').classList.add('open')
-        }, 100);
-    }
-});
-
-document.querySelector('body').addEventListener("click", function(){
-    if (this.classList[0]=='open') {
-        document.querySelector('.menu').style.display = 'none';
-        this.classList.remove('open');
-    }
-});
-
 function coin2native(){
     let c1 = document.querySelector('.price .values input[name="c1"]').value.replace(',', '.');
     let price = document.querySelector('.price .values input[name="price"]').value;
