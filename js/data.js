@@ -45,6 +45,10 @@ var criptoList = {
       name: 'Zcash'
     },
     {
+      code: 'ADA',
+      name: 'Cardano'
+    },
+    {
       code: 'BTT',
       name: 'BitTorrent'
     },
@@ -61,12 +65,16 @@ var criptoList = {
       name: 'Doge'
     },
     {
-      code: 'XML',
+      code: 'XLM',
       name: 'Stellar'
     },
     {
       code: 'USDC',
       name: 'USD Coin'
+    },
+    {
+      code: 'BNB',
+      name: 'Binance'
     }
   ],
   BRL: [
@@ -113,6 +121,10 @@ var criptoList = {
     {
       code: 'ZEC',
       name: 'Zcash'
+    },
+    {
+      code: 'BNB',
+      name: 'Binance'
     }
   ]
 }
