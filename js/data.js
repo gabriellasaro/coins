@@ -1,4 +1,4 @@
-var criptoList = {
+const criptoList = {
   USD: [
     {
       code: 'BTC',
@@ -129,7 +129,7 @@ var criptoList = {
   ]
 }
 
-var coinList = [
+const coinList = [
   {
     code: 'BRL',
     name: 'Real brasileiro'
@@ -146,4 +146,24 @@ function getLocalStorageByKey(key, defaultValue) {
 
 function removeAllChildren(element) {
   document.querySelector(element).innerHTML = '';
+}
+
+function verifyExistenceCripto(coin, value) {
+  let status = false;
+
+  for (let i in criptoList[coin]) {
+    if (criptoList[coin][i].code == value) {
+      status = true;
+      break;
+    }
+  }
+  return status;
+}
+
+function formatCurrency(value) {
+  value = value.toFixed(2).toString();
+  if (value.split('.').length == 1) {
+    value += ',00';
+  }
+  return value.replace('.', ',')
 }

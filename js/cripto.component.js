@@ -2,7 +2,6 @@ function getCripto(coin, cripto) {
     document.querySelector('.price .title .name').innerHTML = "Carregando...";
 
     if (sessionStorage.getItem(coin + '-' + cripto) != null) {
-        console.log(cripto + ' - usando cache!');
         setDataCripto(JSON.parse(sessionStorage.getItem(coin + '-' + cripto)));
     } else {
         let h = new Headers();
@@ -56,17 +55,17 @@ function createItemExchange(data, bc){
     price.classList.add('price');
 
     let value = document.createElement('span');
-    value.innerHTML = data['TOSYMBOL']+' '+data['PRICE'].toString().replace('.', ',');
+    value.innerHTML = data['TOSYMBOL'] + ' ' + formatCurrency(data['PRICE']);
 
     let appreciation = document.createElement('span');
     appreciation.classList.add('txt');
 
     let percent = ((data['PRICE']*100)/data['OPEN24HOUR']-100).toFixed(2);
 
-    if (percent >=0) {
+    if (percent >0) {
         appreciation.style.color = '#3689e6';
         appreciation.innerHTML = ' +'+percent.toString().replace('.', ',')+'%';
-    } else{
+    } else if (percent < 0) {
         appreciation.style.color = '#ed5353';
         appreciation.innerHTML = ' '+percent.toString().replace('.', ',')+'%';
     }

@@ -36,7 +36,9 @@ document.querySelector('.settings select[name="cripto"] option[value="' + getLoc
 // Salva a nova configuração padrão
 document.querySelector('.settings select[name="coin"]').addEventListener("click", function(){
   localStorage.setItem('defaultCoin', this.options[this.selectedIndex].value);
-  localStorage.removeItem('defaultCripto');
+  if (!verifyExistenceCripto(localStorage.getItem('defaultCoin'), localStorage.getItem('defaultCripto'))) {
+    localStorage.removeItem('defaultCripto');
+  }
   removeAllChildren('.settings select[name="cripto"]');
   addOptionsSettingsCripto(getLocalStorageByKey('defaultCoin', 'BRL'));
 
