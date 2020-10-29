@@ -29,6 +29,9 @@ function setDataCripto(data) {
 
     let symbols = price.querySelectorAll('.values .coin span');
     symbols[0].innerHTML = data['AggregatedData']['FROMSYMBOL'];
+    if (data['AggregatedData']['FROMSYMBOL'].length >= 4) {
+        symbols[0].style.fontSize = "30px";
+    }
     symbols[1].innerHTML = data['AggregatedData']['TOSYMBOL'];
 
     price.querySelector('.values .coin input[name="c1"]').value = '1';
