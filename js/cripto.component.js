@@ -35,7 +35,7 @@ function setDataCripto(data) {
     symbols[1].innerHTML = data['AggregatedData']['TOSYMBOL'];
 
     price.querySelector('.values .coin input[name="c1"]').value = '1';
-    price.querySelector('.values .coin input[name="c2"]').value = data['AggregatedData']['PRICE'].toString().replace('.', ',');
+    price.querySelector('.values .coin input[name="c2"]').value = data['AggregatedData']['PRICE'].toLocaleString('pt-BR');
     price.querySelector('.values .coin input[name="price"]').value = data['AggregatedData']['PRICE'].toString();
 
     let exchanges = document.querySelector('.content .exchanges');
@@ -58,7 +58,7 @@ function createItemExchange(data, bc){
     price.classList.add('price');
 
     let value = document.createElement('span');
-    value.innerHTML = data['TOSYMBOL'] + ' ' + formatCurrency(data['PRICE']);
+    value.innerHTML = formatCurrency(data['PRICE'], data['TOSYMBOL']);
 
     let appreciation = document.createElement('span');
     appreciation.classList.add('txt');

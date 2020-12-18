@@ -27,7 +27,7 @@ document.querySelector('.price .values .coin input[name="c2"]').addEventListener
 function coin2native(){
     let c1 = document.querySelector('.price .values input[name="c1"]').value.replace(',', '.');
     let price = document.querySelector('.price .values input[name="price"]').value;
-    document.querySelector('.price .values input[name="c2"]').value = (c1*price).toFixed(2).toString().replace('.', ',');
+    document.querySelector('.price .values input[name="c2"]').value = (c1*price).toLocaleString('pt-BR');
 }
 
 function native2coin(){

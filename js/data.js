@@ -160,10 +160,6 @@ function verifyExistenceCripto(coin, value) {
   return status;
 }
 
-function formatCurrency(value) {
-  value = value.toFixed(2).toString();
-  if (value.split('.').length == 1) {
-    value += ',00';
-  }
-  return value.replace('.', ',')
+function formatCurrency(value, currency) {
+  return value.toLocaleString('pt-BR', {style: 'currency', currency: currency});
 }
