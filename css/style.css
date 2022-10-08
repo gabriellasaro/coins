@@ -1,6 +1,6 @@
-/* COPYRIGHT 2018-2020 Gabriel Lasaro */
+/* COPYRIGHT 2018-2022 Gabriel Lasaro */
 body {
-  font-family: "Source Sans Pro", "Open Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   background: #fff;
   margin: 0px;
   padding: 0px;
@@ -23,52 +23,51 @@ body {
   margin: auto;
   width: 300px;
   text-align: center;
-  color: #303030;
+  color: #fff;
+  background: linear-gradient(to right, #2c2c2c 0%, #1e1d1d 51%, #111111 100%);
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #303030;
+  border-radius: 15px;
   transition: 0.5s;
   opacity: 0.8;
 }
 .price .title h1:hover {
-  opacity: 1;
-  transform: scale(1.03);
-  background: linear-gradient(to right, #8cd5ff 0%, #5288c5 51%, #357cce 100%);
-  border: 1px solid #303030;
+  transform: scale(1.01);
   box-shadow: 0px 0px 1px 0px rgba(50, 50, 50, 0.75);
   cursor: pointer;
+}
+.price .title svg {
+  fill: #ffffff;
 }
 .price .values {
   padding: 0px;
   margin: 30px auto 0px auto;
-  /* background: #303030; */
 }
 .price .values .coin {
   padding: 8px;
   border: 1px solid transparent;
-  border-radius: 6px;
+  border-radius: 15px;
   margin: 10px 0px 10px 0px;
   opacity: 0.8;
   transition: 0.5s;
   background: #f0ecea;
 }
 .price .values .coin span {
-  font-size: 34px;
+  font-size: 18px;
   color: #312f2f;
 }
 .price .values .coin:hover {
-  opacity: 1;
-  border: 1px solid #312f2f;
+  border: 1px solid #e1e1e1;
+  background: #e1e1e1;
 }
 .price .values .coin:active {
-  opacity: 1;
-  border: 1px solid #312f2f;
+  border: 1px solid #111111;
 }
 .price .values input {
   display: inline-block;
   font-size: 34px;
   border: 0;
   background: transparent;
+  outline: none;
 }
 @media only screen and (min-width: 450px) {
   .price .values {
@@ -103,95 +102,63 @@ body {
     margin-top: 70px;
   }
 }
-/* CONTENT */
 .content {
   position: relative;
-  top: 72px;
+  top: 52px;
 }
-.content .title {
-  margin: 0px;
+.content h2 {
   font-size: 26px;
   font-weight: 100;
   color: #303030;
+  margin-top: 0px;
   padding: 5px 20px 0px 20px;
 }
-.content .exchanges .item {
+.content .exchanges .exchange-box {
   padding: 20px;
 }
-.content .exchanges .bc {
-  background: #f0ecea;
-  border-radius: 3px;
-}
-.content .exchanges .item .title {
-  margin: 0px 0px 10px 0px;
-  font-size: 18px;
+.content .exchanges .exchange-box .exchange-name {
+  margin: 10px 0px 0px 20px;
+  font-size: 16px;
   font-weight: 100;
-  color: #aaa7a7;
 }
-.content .exchanges .item .price {
+.content .exchanges .exchange-box .exchange-price {
   font-size: 24px;
   font-weight: bold;
-  color: #303030;
   margin: 10px 0px 0px 20px;
 }
-.content .exchanges .item .txt {
+.content .exchanges .exchange-box .txt {
   font-size: 16px;
 }
-.content .news {
-  position: relative;
+.content .exchanges .dark {
+  background: linear-gradient(to right, #2c2c2c 0%, #1e1d1d 51%, #111111 100%);
+  border-radius: 15px;
 }
-.content .news .item {
-  display: inline-block;
-  position: relative;
-  width: 300px;
-  height: 280px;
-  border-radius: 10px;
-  background-size: cover;
-  background-position: 50% 50%;
-  overflow: hidden;
-  margin: 10px;
+.content .exchanges .dark .exchange-name {
+  color: #ffffff;
 }
-.content .news .item .container {
-  position: absolute;
-  bottom: 0;
-  padding: 16px;
+.content .exchanges .dark .exchange-price {
+  color: #ffffff;
 }
-.content .news .item .container p {
-  margin: 3px;
-  padding: 0px;
+.content .exchanges .light .exchange-name {
+  color: #111111;
 }
-.content .news .item .container .post-categories {
-  display: inline-block;
-  font-size: 12px;
-  color: #fff;
-  background: #303030;
-  opacity: 0.8;
-  border-radius: 60px;
-  padding: 3px 8px 4px 8px;
-}
-.content .news .item .container .post-title {
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-}
-.content .news .item a {
-  text-decoration: none;
-  color: #fff;
+.content .exchanges .light .exchange-price {
+  color: #111111;
 }
 .content .copy {
   grid-area: copy;
   padding: 4px;
-  margin: 60px 0px 20px 0px;
+  margin: 60px 0px 10px 0px;
   color: #303030;
 }
 .content .copy p {
   text-align: center;
+  font-style: italic;
   font-size: 14px;
-  padding: 4px;
   margin: 0px;
 }
 .content .copy a {
-  color: #357cce;
+  color: #111111;
   text-decoration: none;
   font-weight: bold;
 }
@@ -217,6 +184,8 @@ body {
   .content {
     width: 100%;
     margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
     left: 0;
   }
 }
@@ -227,26 +196,22 @@ body {
   left: 50%;
   transform: translateX(-50%);
   padding: 0px;
-  border-radius: 10px;
-  background: #8cd5ff;
+  border-radius: 15px;
+  background: linear-gradient(to right, #363636 0%, #363535 51%, #363636 100%);
 }
 .menu p {
-  font-size: 18px;
+  font-size: 16px;
+  color: #ffffff;
   padding: 10px 20px 10px 20px;
   margin: 0px;
-  border-radius: 3px;
+  border-radius: 15px;
   transition: 0.5s;
-  opacity: 0.8;
 }
 .menu p:hover {
   cursor: pointer;
-  opacity: 1;
-  transform: scale(1.03);
-  background: #357cce;
-}
-.menu hr {
-  border: none;
-  border-top: 1px solid #6fc8fc;
+  padding: 10px 25px;
+  transform: scale(1.01);
+  background: #111111;
 }
 
 @media only screen and (min-width: 450px) {
@@ -269,7 +234,7 @@ body {
 .icon-settings svg {
   width: 2em;
   cursor: pointer;
-  color: #357cce;
+  color: #111111;
 }
 
 .cont-settings {
@@ -280,21 +245,21 @@ body {
   top: 0;
   justify-content: center;
   align-items: center;
-  background-color: #8cd5ff54;
+  background-color: rgba(174, 188, 197, 0.3294117647);
 }
 .cont-settings .settings {
   text-align: center;
-  padding: 60px;
-  border-radius: 4px;
+  padding: 30px 60px;
+  border-radius: 15px;
   background: #fff;
-  box-shadow: 0px 0px 3px 0px #312f2f;
+  box-shadow: 0px 0px 20px 0px #111111;
 }
 .cont-settings .settings p {
   font-size: 18px;
 }
 .cont-settings .settings select {
   width: 100%;
-  height: calc(1.5em + .75rem + 2px);
+  height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;

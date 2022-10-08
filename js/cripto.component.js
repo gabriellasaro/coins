@@ -5,13 +5,17 @@ function getCripto(coin, cripto) {
         setDataCripto(JSON.parse(sessionStorage.getItem(coin + '-' + cripto)));
     } else {
         let h = new Headers();
-        fetch('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym='+cripto+'&tsym='+coin, {method: 'GET', headers: h, mode: 'cors'}).then(function(response) {
+        fetch('https://min-api.cryptocompare.com/data/top/exchanges/full?fsym=' + cripto + '&tsym=' + coin, {
+            method: 'GET',
+            headers: h,
+            mode: 'cors'
+        }).then(function (response) {
             return response.json();
-        }).then(function(data) {
+        }).then(function (data) {
             setDataCripto(data['Data']);
             sessionStorage.setItem(coin + '-' + cripto, JSON.stringify(data['Data']));
-        }).catch(function() {
-            window.setTimeout(function(){
+        }).catch(function () {
+            window.setTimeout(function () {
                 alert("Error!");
             }, 300);
         });
@@ -20,42 +24,38 @@ function getCripto(coin, cripto) {
 
 function setDataCripto(data) {
     let price = document.querySelector('.price');
-    
+
     let image = price.querySelector('.title .img-coin')
-    image.src = "https://www.cryptocompare.com"+data['CoinInfo']['ImageUrl'];
+    image.src = "https://www.cryptocompare.com" + data['CoinInfo']['ImageUrl'];
     image.title = data['CoinInfo']['FullName'];
     image.alt = data['CoinInfo']['FullName'];
     price.querySelector('.title .button-select .name').innerHTML = data['CoinInfo']['FullName'];
 
     let symbols = price.querySelectorAll('.values .coin span');
     symbols[0].innerHTML = data['AggregatedData']['FROMSYMBOL'];
-    if (data['AggregatedData']['FROMSYMBOL'].length >= 4) {
-        symbols[0].style.fontSize = "30px";
-    }
     symbols[1].innerHTML = data['AggregatedData']['TOSYMBOL'];
 
     price.querySelector('.values .coin input[name="c1"]').value = '1';
-    price.querySelector('.values .coin input[name="c2"]').value = data['AggregatedData']['PRICE'].toLocaleString('pt-BR');
+    price.querySelector('.values .coin input[name="c2"]').value = data['AggregatedData']['PRICE'].toLocaleString();
     price.querySelector('.values .coin input[name="price"]').value = data['AggregatedData']['PRICE'].toString();
 
     let exchanges = document.querySelector('.content .exchanges');
     exchanges.innerHTML = '';
-    for(let i = 0; i<data['Exchanges'].length; i++) {
-        exchanges.appendChild(createItemExchange(data['Exchanges'][i], (i%2)));
+    for (let i = 0; i < data['Exchanges'].length; i++) {
+        exchanges.appendChild(createItemExchange(data['Exchanges'][i], (i % 2)));
     }
 }
 
-function createItemExchange(data, bc){
+function createItemExchange(data, bc) {
     let root = document.createElement('div');
-    root.classList.add('item');
-    if (bc==0) { root.classList.add('bc') }
+    root.classList.add('exchange-box', bc === 0 ? 'dark' : 'light');
 
     let title = document.createElement('p');
-    title.classList.add('title');
+    title.classList.add('exchange-name');
     title.innerHTML = data['MARKET'];
 
     let price = document.createElement('p');
-    price.classList.add('price');
+    price.classList.add('exchange-price');
 
     let value = document.createElement('span');
     value.innerHTML = formatCurrency(data['PRICE'], data['TOSYMBOL']);
@@ -63,14 +63,14 @@ function createItemExchange(data, bc){
     let appreciation = document.createElement('span');
     appreciation.classList.add('txt');
 
-    let percent = ((data['PRICE']*100)/data['OPEN24HOUR']-100).toFixed(2);
+    let percent = ((data['PRICE'] * 100) / data['OPEN24HOUR'] - 100).toFixed(2);
 
-    if (percent >0) {
-        appreciation.style.color = '#3689e6';
-        appreciation.innerHTML = ' +'+percent.toString().replace('.', ',')+'%';
+    if (percent > 0) {
+        appreciation.style.color = '#1074e1';
+        appreciation.innerHTML = ' +' + percent.toString().replace('.', ',') + '%';
     } else if (percent < 0) {
-        appreciation.style.color = '#ed5353';
-        appreciation.innerHTML = ' '+percent.toString().replace('.', ',')+'%';
+        appreciation.style.color = '#f80000';
+        appreciation.innerHTML = ' ' + percent.toString().replace('.', ',') + '%';
     }
 
     price.appendChild(value);
@@ -82,20 +82,20 @@ function createItemExchange(data, bc){
 }
 
 // Mostra e oculta menu das criptos
-document.querySelector('.price .title .button-select').addEventListener("click", function(){
+document.querySelector('.price .title .button-select').addEventListener("click", function () {
     let menu = document.querySelector('.menu');
-    if (menu.style.display=="block"){
+    if (menu.style.display == "block") {
         menu.style.display = "none";
-    } else{
+    } else {
         menu.style.display = "block";
-        window.setTimeout(function(){
+        window.setTimeout(function () {
             document.querySelector('body').classList.add('open')
         }, 100);
     }
 });
 
-document.querySelector('body').addEventListener("click", function(){
-    if (this.classList[0]=='open') {
+document.querySelector('body').addEventListener("click", function () {
+    if (this.classList[0] == 'open') {
         document.querySelector('.menu').style.display = 'none';
         this.classList.remove('open');
     }
